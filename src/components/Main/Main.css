@@ -65,7 +65,7 @@
     background-color: #dfe4ea;
 
 }
-.main-bottom{
+.mainbottom{
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -104,4 +104,28 @@
     margin: 15px;
     text-align: center;
     font-weight: 300;
+}
+.result{
+    padding: 0px 5%;
+    max-height: 70vh;
+    overflow-y: scroll ;
+}
+.result::-webkit-scrollbar{
+    display: none;
+}
+.result-title{
+    margin: 40px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.result img{
+    width: 40px;
+    border-radius: 50%;
+
+}
+.result-data{
+    display: flex;
+    align-items: start;
+    gap: 20px;
 }
