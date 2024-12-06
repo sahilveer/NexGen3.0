@@ -4,16 +4,17 @@ import { assets } from '../../assets/assets'
 import { Context } from '../../context/Context'
 
 const Main = () => {
+  const { onSent, recentPrompt, showResult, loading, resultData, setInput, input } = useContext(Context);
 
-  const { onSent,
-    recentPrompt,
-    showResult,
-    loading,
-    resultData,
-    setInput,
-    input
-  } = useContext(Context);
-
+  // Handle Enter key press
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault(); // Prevent new line creation or form submission
+      if (input.trim()) { // Only send if input is not empty
+        onSent();
+      }
+    }
+  };
 
   return (
     <div className='main'>
@@ -39,7 +40,6 @@ const Main = () => {
                 : <p dangerouslySetInnerHTML={{ __html: resultData }}></p>
               }
             </div>
-
           </div>
           : <>
             <div className="greet">
@@ -67,11 +67,15 @@ const Main = () => {
           </>
         }
 
-
-
         <div className="main-bottom">
           <div className="search-box">
-            <input onChange={(e) => setInput(e.target.value)} value={input} type="text" placeholder='Enter a prompt here' />
+            <input
+              onChange={(e) => setInput(e.target.value)}
+              value={input}
+              type="text"
+              placeholder='Enter a prompt here'
+              onKeyDown={handleKeyDown} // Handle Enter key press
+            />
             <div>
               <img src={assets.gallery_icon} width={30} alt="" />
               <img src={assets.mic_icon} width={30} alt="" />
@@ -84,7 +88,7 @@ const Main = () => {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Main
+export default Main;
