@@ -19,6 +19,10 @@ const ContextProvider = (props) => {
         }, 75 * index);
     }
 
+    const newChat = async () => {
+      setLoading(false);
+      setShowResult(false);
+  }
     const onSent = async (prompt) => {
 
         setResultData("")
@@ -54,10 +58,7 @@ const ContextProvider = (props) => {
         setInput("")
     }
 
-    const newChat = async () => {
-        setLoading(false);
-        setShowResult(false);
-    }
+    
 
     const contextValue = {
         prevPrompts,
